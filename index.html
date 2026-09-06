@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa da Essência | Vida Arquetípica — Érika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4/fonts/remixicon.css">
+<style>
+  :root {
+    --bg: #faf7f2;
+    --bg-soft: #f2ebe1;
+    --card: #ffffff;
+    --text: #2c3328;
+    --text-soft: #4a5445;
+    --muted: #737d6e;
+    --moss: #384630;
+    --moss-dark: #25311f;
+    --moss-soft: rgba(56, 70, 48, 0.07);
+    --gold: #c19a5b;
+    --gold-dark: #9e7a3e;
+    --gold-soft: rgba(193, 154, 91, 0.12);
+    --border: rgba(56, 70, 48, 0.12);
+    --border-gold: rgba(193, 154, 91, 0.3);
+    --shadow-sm: 0 4px 20px rgba(44, 51, 40, 0.04);
+    --shadow-md: 0 12px 32px rgba(44, 51, 40, 0.08);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Karla', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--moss);
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== HEADER / HERO ===== */
+  .hero {
+    padding: 40px 0 32px;
+    text-align: center;
+    background: linear-gradient(180deg, #f4eee5 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .lotus-icon {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    color: var(--moss-dark);
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--gold-dark);
+    font-style: italic;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* ===== IMAGEM PRINCIPAL ===== */
+  .main-image-section {
+    padding: 36px 0 24px;
+    text-align: center;
+  }
+
+  .main-image-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .main-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .main-image-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  /* ===== APRESENTAÇÃO ===== */
+  .intro-text {
+    padding: 20px 0 36px;
+    font-size: 1.1rem;
+    color: var(--text);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .intro-text p {
+    margin-bottom: 16px;
+  }
+
+  /* ===== SEÇÃO COM CARDS DE CONTEÚDO ===== */
+  .section-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 32px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-card h2 {
+    font-size: 1.8rem;
+    color: var(--moss-dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-card h2 i {
+    color: var(--gold-dark);
+    font-size: 1.5rem;
+  }
+
+  /* LISTAS COM CHECKMARK CUSTOMIZADO */
+  .custom-list {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+
+  .custom-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 14px;
+    color: var(--text-soft);
+    font-weight: 500;
+    font-size: 1.02rem;
+  }
+
+  .custom-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    color: var(--gold-dark);
+    font-size: 1rem;
+  }
+
+  .custom-list.check-list li::before {
+    content: '\eb7b'; /* remixicon ri-checkbox-circle-line */
+    font-family: 'remixicon';
+    color: var(--moss);
+    font-size: 1.1rem;
+  }
+
+  /* ENTREGÁVEIS (ÁUDIO, PDF, COMBO) */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .deliverable-item {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .deliverable-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .deliverable-text {
+    font-size: 1rem;
+    color: var(--moss-dark);
+    font-weight: 500;
+  }
+
+  /* INFORMATIVOS E PRAZO */
+  .info-box {
+    background: var(--moss-soft);
+    border-left: 4px solid var(--moss);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+
+  .info-box p {
+    color: var(--moss-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .info-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .delivery-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--gold-dark);
+    font-size: 1.05rem;
+  }
+
+  /* ===== PREÇO E CHECKOUT ===== */
+  .checkout-section {
+    text-align: center;
+    background: linear-gradient(180deg, var(--card) 0%, var(--bg-soft) 100%);
+    border: 1px solid var(--border-gold);
+    border-radius: 20px;
+    padding: 40px 24px;
+    margin: 40px 0 60px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .price-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--moss-dark);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .btn-checkout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    padding: 16px 28px;
+    background: var(--moss);
+    color: #ffffff;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(56, 70, 48, 0.25);
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .btn-checkout:hover {
+    background: var(--moss-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(56, 70, 48, 0.35);
+  }
+
+  .btn-checkout i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-checkout:hover i {
+    transform: translateX(4px);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+  }
+
+  footer p {
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  footer .assinatura {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: var(--moss-dark);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* ===== ÍCONE FLUTUANTE DO WHATSAPP ===== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-2px);
+    background-color: #20ba5a;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+  }
+
+  /* RESPONSIVIDADE */
+  @media (max-width: 680px) {
+    .section-card {
+      padding: 28px 20px;
+    }
+
+    .price-value {
+      font-size: 2.5rem;
+    }
+
+    .whatsapp-float {
+      bottom: 20px;
+      right: 20px;
+      width: 54px;
+      height: 54px;
+      font-size: 28px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== HERO / CABEÇALHO ===== -->
+  <header class="hero">
+    <div class="container">
+      <span class="lotus-icon">🪷</span>
+      <h1>Mapa da Essência</h1>
+      <p class="hero-subtitle">Conheça melhor quem você é.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ===== IMAGEM PRINCIPAL ===== -->
+    <section class="main-image-section">
+      <div class="main-image-wrapper">
+        <img src="mapadaessencia.jpeg" alt="Mapa da Essência — Vida Arquetípica" class="main-image" onerror="this.style.display='none'">
+      </div>
+    </section>
+
+    <!-- ===== APRESENTAÇÃO ===== -->
+    <section class="intro-text">
+      <p>O <strong>Mapa da Essência</strong> é uma leitura voltada para o autoconhecimento, identidade, padrões e ciclos pessoais.</p>
+      <p>A proposta é ajudar você a compreender melhor sua própria natureza, reconhecer seus potenciais e perceber padrões que podem estar dificultando sua evolução.</p>
+    </section>
+
+    <!-- ===== PARA QUEM É? ===== -->
+    <section class="section-card">
+      <h2><i class="ri-compass-3-line"></i> Para quem é?</h2>
+      <p style="margin-bottom: 16px; color: var(--text-soft); font-weight: 500;">Este mapa pode fazer sentido para você se:</p>
+      <ul class="custom-list">
+        <li>sente-se confusa em relação à própria vida;</li>
+        <li>ainda não compreende completamente quem é;</li>
+        <li>deseja se conhecer profundamente;</li>
+        <li>percebe padrões ou ciclos que se repetem;</li>
+        <li>deseja compreender melhor seus bloqueios;</li>
+        <li>sente necessidade de se reconectar consigo mesma;</li>
+        <li>deseja desenvolver uma relação mais consciente com quem você é.</li>
+      </ul>
+    </section>
+
+    <!-- ===== O QUE VOCÊ RECEBE? ===== -->
+    <section class="section-card">
+      <h2><i class="ri-gift-line"></i> O que você recebe?</h2>
+      <p style="margin-bottom: 16px; color: var(--text-soft); font-weight: 500;">Você recebe uma leitura personalizada do seu Mapa Astral, direcionada especialmente para sua vida pessoal.</p>
+      <p style="margin-bottom: 12px; font-weight: 600; color: var(--moss-dark);">Durante a leitura, você irá compreender:</p>
+      
+      <ul class="custom-list check-list">
+        <li>seus principais traços e características;</li>
+        <li>seus potenciais e talentos naturais;</li>
+        <li>pontos que já são forças em você;</li>
+        <li>aspectos que podem ser desenvolvidos;</li>
+        <li>padrões e tendências que merecem atenção;</li>
+        <li>seus Arquétipos de Essência;</li>
+        <li>como expressar seus arquétipos naturais de maneira mais autêntica.</li>
+      </ul>
+
+      <p style="margin: 24px 0 12px; font-weight: 600; color: var(--moss-dark);">Você também recebe:</p>
+
+      <div class="deliverables-grid">
+        <div class="deliverable-item">
+          <span class="deliverable-icon">🎧</span>
+          <div class="deliverable-text"><strong>Áudios completos</strong> com toda a orientação da sua leitura, feitos especialmente para você.</div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-icon">📄</span>
+          <div class="deliverable-text"><strong>PDFs complementares</strong> com informações importantes da análise.</div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-icon">⚜️</span>
+          <div class="deliverable-text"><strong>Seu Combo de Arquétipos</strong> personalizado, escolhido de acordo com a sua leitura.</div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <p>Tudo é preparado individualmente, com carinho, respeito e clareza.</p>
+        <div class="delivery-time">
+          <i class="ri-time-line"></i> Prazo de entrega: até 5 dias.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VALOR DE TROCA E CHECKOUT ===== -->
+    <section class="checkout-section">
+      <div class="price-label">Valor de troca</div>
+      <div class="price-value">R$ 249,90</div>
+      <a href="https://forms.gle/oo8hwimk8ioGcXEo6" class="btn-checkout" target="_blank" rel="noopener">
+        QUERO CONHECER MINHA ESSÊNCIA
+        <i class="ri-arrow-right-line"></i>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p class="assinatura">Com carinho, Érika</p>
+      <p>Vida Arquetípica · Clareza · Direção · Acolhimento</p>
+    </div>
+  </footer>
+
+  <!-- ===== ÍCONE FLUTUANTE DO WHATSAPP ===== -->
+  <a href="https://wa.me/message/HYCA7N7T73X4N1" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+
+</body>
+</html>
